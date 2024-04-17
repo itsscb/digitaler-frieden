@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.min-height {
+  min-height: 600px;
+}
+
+.text-primary {
+  color: rgba(51, 217, 178,1.0);
+}
+
+.text-primary-dark {
+  color: rgba(33, 140, 116,1.0);
+}
+
+.bg-primary-dark {
+  background-color: rgba(33, 140, 116,1.0);
+}
+
+.bg-primary {
+  background-color: rgba(51, 217, 178,1.0);
+}
+
+.text-secondary {
+  color: rgba(52, 172, 224,1.0);
+}
+
+.text-secondary-dark {
+  color: rgba(34, 112, 147,1.0);
+}
+
+.bg-secondary-dark {
+  background-color: rgba(34, 112, 147,1.0);
+}
+
+.bg-secondary {
+  background-color: rgba(52, 172, 224,1.0);
+}
+

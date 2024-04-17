@@ -26,3 +26,5 @@ Cargo.lock
 #/target
 
 node_modules/
+
+**/*.pdf
