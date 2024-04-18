@@ -7,7 +7,7 @@ use crate::router::Route;
 #[function_component]
 pub fn Home() -> Html {
     html! {
-        <div class="flex flex-col items-center h-screen min-height space-y-24 px-12 mt-20">
+        <div class="flex flex-col items-center h-full space-y-24 px-12 mt-20 mb-20">
             <div class="flex flex-col items-center space-y-4">
                 <img src="public/digitaler-frieden_logo.jpg" alt="logo digitaler frieden" class="min-w-56 w-96"/>
                 <h3 class="text-3xl font-bold text-center ">{"Digitale Spuren entfernen per Knopfdruck"}</h3>

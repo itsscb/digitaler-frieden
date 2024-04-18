@@ -2,8 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+.cx-date-picker {
+  @apply inline-block relative;
+}
+
+.cx-date-picker[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.text-danger {
+  color: rgba(255, 82, 82,1.0);
+}
+
+.bg-danger {
+  background-color: rgba(255, 82, 82,1.0);
+}
+
 .min-height {
-  min-height: 600px;
+  min-height: 500px;
+}
+
+.text-tertiary {
+  color: rgba(132, 129, 122,1.0);
+}
+
+.bg-tertriary {
+  background-color: rgba(132, 129, 122,1.0);
+}
+
+.border-primary {
+  border-color: rgba(51,217,178,1.0);
 }
 
 .text-primary {
