@@ -1,7 +1,7 @@
 use crate::pages::{Clues, Deceased, Home, Register, SignUp, Verify};
 
-use yew_router::prelude::*;
 use yew::{function_component, html, Html};
+use yew_router::prelude::*;
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
     #[at("/")]
@@ -23,22 +23,22 @@ fn route(routes: Route) -> Html {
     match routes {
         Route::Home => {
             html! { <Home /> }
-        },
+        }
         Route::SignUp => {
             html! { <SignUp /> }
-        },
+        }
         Route::Verify => {
             html! { <Verify /> }
-        },
+        }
         Route::Clues => {
             html! { <Clues /> }
-        },
+        }
         Route::Deceased => {
             html! { <Deceased /> }
-        },
+        }
         Route::Register => {
             html! { <Register /> }
-        },
+        }
     }
 }
 
@@ -50,4 +50,3 @@ pub fn app() -> Html {
         </BrowserRouter>
     }
 }
-           
