@@ -1,4 +1,4 @@
-use yew::{function_component, html, Html};
+use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
 use crate::router::Route;
@@ -30,9 +30,7 @@ pub fn Verify() -> Html {
                             <svg
                                 class="w-8 "
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -50,33 +48,36 @@ pub fn Verify() -> Html {
             </div>
             <div class="mt-24 md:mt-32 flex flex-col items-center">
                 <h3 class="text-3xl font-bold mb-6">{ "Verifizieren" }</h3>
-                <div class="flex flex-col items-start">
+                <div class="flex flex-col items-start min-w-72 md:w-auto">
                     <p class="mb-3">{ "Bitte verifiziere deine E-Mail Adresse." }</p>
                     <p class="mb-12">{ "Wir haben dir eine E-Mail geschickt." }</p>
                     <p class="mb-8">{ "Dann geht es hier weiter." }</p>
                 </div>
                 <div class="flex justify-center max-w-xl w-full mb-6">
-                    <div
-                        class="bg-primary
-                    hover:bg-primary-dark 
-                    hover:text-white 
-                    hover:-translate-y-1 
-                    hover:cursor-pointer
-                    transition duration-150 
-                    font-bold text-xl 
-                    max-w-36 
-                    rounded-md 
-                    text-black
-                    text-center
-                    w-full 
-                    min-h-12 
-                    h-12
-                    flex justify-center items-center mb-16"
+                    <Link<Route>
+                        to={Route::Register}
+                        classes={classes!(
+                    "bg-primary",
+                    "hover",":bg-primary-dark",
+                    "hover",":text-white",
+                    "hover",":-translate-y-1",
+                    "hover",":cursor-pointer",
+                    "transition", "duration-150",
+                    "font-bold", "text-xl",
+                    "rounded-md",
+                    "text-black",
+                    "text-center",
+                    "max-w-sm",
+                    "w-full",
+                    "min-h-12",
+                    "h-12",
+                    "flex", "justify-center", "items-center",
+                                )}
                     >
-                        <Link<Route> to={Route::Register}>{ "Weiter" }</Link<Route>>
-                    </div>
+                        { "Weiter" }
+                    </Link<Route>>
                 </div>
-                <div class="flex flex-col items-start">
+                <div class="flex flex-col items-start min-w-72 md:w-auto">
                     <p class="mb-1">{ "Noch keine E-Mail erhalten?" }</p>
                     <p class="mb-4">{ "Spam Ordner schon überprüft?" }</p>
                     <div

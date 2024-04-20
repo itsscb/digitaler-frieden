@@ -1,4 +1,4 @@
-use yew::{function_component, html, Html};
+use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
 use crate::router::Route;
@@ -29,9 +29,7 @@ pub fn Clues() -> Html {
                         <svg
                             class="w-8 "
                             xmlns="http://www.w3.org/2000/svg"
-                            height="currentHeight"
                             viewBox="0 0 24 24"
-                            width="currentWidth"
                             fill="currentColor"
                         >
                             <path d="M0 0h24v24H0z" fill="none" />
@@ -60,9 +58,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="text-primary w-10 absolute right-4"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -75,9 +71,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="w-10 text-danger"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -91,9 +85,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="w-10 text-danger"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -112,9 +104,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="text-primary w-10 absolute right-4"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -127,9 +117,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="w-10 text-danger"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -143,9 +131,7 @@ pub fn Clues() -> Html {
                             <svg
                                 class="w-10 text-danger"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="currentHeight"
                                 viewBox="0 0 24 24"
-                                width="currentWidth"
                                 fill="currentColor"
                             >
                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -156,26 +142,31 @@ pub fn Clues() -> Html {
                             <p class="text-md">{ "+49 9876 543 210" }</p>
                         </div>
                     </div>
-                    <div class="flex justify-center max-w-xl w-full mb-6">
-                        <div
-                            class="bg-primary
-                    hover:bg-primary-dark 
-                    hover:text-white 
-                    hover:-translate-y-1 
-                    hover:cursor-pointer
-                    transition duration-150 
-                    font-bold text-xl 
-                    max-w-xl 
-                    rounded-md 
-                    text-black
-                    text-center
-                    w-full 
-                    min-h-16 
-                    h-16
-                    flex justify-center items-center mb-16"
+                    <div class="flex justify-center max-w-lg w-full mb-6">
+                        <Link<Route>
+                            to={Route::Register}
+                            classes={classes!(
+                    "bg-primary",
+                    "hover",":bg-primary-dark",
+                    "hover",":text-white",
+                    "hover",":-translate-y-1",
+                    "hover",":cursor-pointer",
+                    "transition", "duration-150",
+                    "font-bold", "text-xl",
+                    "max-w-sm",
+                    "rounded-md",
+                    "text-black",
+                    "text-center",
+                    "w-full",
+                    "min-h-16",
+                    "h-16",
+                    "flex",
+                    "justify-center",
+                    "items-center",
+                                    )}
                         >
-                            <Link<Route> to={Route::Register}>{ "Weiter" }</Link<Route>>
-                        </div>
+                            { "Weiter" }
+                        </Link<Route>>
                     </div>
                 </div>
             </div>

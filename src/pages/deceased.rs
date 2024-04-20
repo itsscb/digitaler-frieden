@@ -29,9 +29,7 @@ pub fn Deceased() -> Html {
                         <svg
                             class="w-8 "
                             xmlns="http://www.w3.org/2000/svg"
-                            height="currentHeight"
                             viewBox="0 0 24 24"
-                            width="currentWidth"
                             fill="currentColor"
                         >
                             <path d="M0 0h24v24H0z" fill="none" />
@@ -115,24 +113,27 @@ pub fn Deceased() -> Html {
                         type="date"
                     />
                 </div>
-                <div
-                    class="bg-primary
-                hover:bg-primary-dark 
-                hover:text-white 
-                hover:-translate-y-1 
-                hover:cursor-pointer
-                transition duration-150 
-                font-bold text-xl 
-                max-w-xl 
-                rounded-md 
-                text-black
-                text-center
-                w-full 
-                h-16
-                mt-8 flex justify-center items-center "
+                <Link<Route>
+                    to={Route::Clues}
+                    classes={yew::classes!(
+    "bg-primary",
+                   "hover",":bg-primary-dark",
+                   "hover",":text-white",
+                   "hover",":-translate-y-1",
+                   "hover",":cursor-pointer",
+                   "transition", "duration-150",
+                   "font-bold", "text-xl",
+                   "max-w-sm",
+                   "rounded-md",
+                   "text-black",
+                   "text-center",
+                   "w-full",
+                   "h-16",
+                   "mt-8", "flex", "justify-center", "items-center",
+                               )}
                 >
-                    <Link<Route> to={Route::Clues}>{ "Weiter" }</Link<Route>>
-                </div>
+                    { "Weiter" }
+                </Link<Route>>
             </div>
         </div>
     }

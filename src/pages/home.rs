@@ -1,4 +1,4 @@
-use yew::{function_component, html, Html};
+use yew::{classes, function_component, html, Html};
 use yew_router::prelude::Link;
 
 use crate::router::Route;
@@ -20,25 +20,32 @@ pub fn Home() -> Html {
                     { "Mit uns finden Sie Ihre digitalen Spuren und können diese entfernen." }
                 </p>
             </div>
-            <div
-                class="bg-primary
-                hover:bg-primary-dark 
-                hover:text-white 
-                hover:-translate-y-1 
-                hover:cursor-pointer
-                transition duration-150 
-                font-bold text-xl 
-                max-w-xl 
-                rounded-md 
-                text-black
-                text-center
-                w-full 
-                min-h-16 
-                h-16
-                flex justify-center items-center"
+            <Link<Route>
+                to={Route::SignUp}
+                classes={classes!(
+                 "bg-primary",
+                "hover:bg-primary-dark",
+                "hover:text-white",
+                "hover:-translate-y-1",
+                "hover:cursor-pointer",
+                "transition",
+                "duration-150",
+                "font-bold",
+                "text-xl",
+                "max-w-xl",
+                "rounded-md",
+                "text-black",
+                "text-center",
+                "w-full",
+                "min-h-16",
+                "h-16",
+                "flex",
+                "justify-center",
+                "items-center",
+                        )}
             >
-                <Link<Route> to={Route::SignUp}>{ "Weiter" }</Link<Route>>
-            </div>
+                { "Weiter" }
+            </Link<Route>>
             <div class="flex flex-col items-center space-y-4">
                 <p class="text-center italic">
                     { "Mit der weiteren Nutzung stimmst du den folgenden Bedingungen zu:" }
