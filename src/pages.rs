@@ -10,6 +10,9 @@ pub use deceased::Deceased;
 mod clues;
 pub use clues::Clues;
 
+mod relationship;
+pub use relationship::Relationship;
+
 mod register;
 pub use register::Register;
 

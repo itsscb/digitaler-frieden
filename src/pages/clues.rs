@@ -97,7 +97,7 @@ pub fn Clues() -> Html {
                         </div>
                     </div>
                     <div
-                        class="flex flex-col justify-center items-center w-full mb-10 space-y-4 md:space-y-4"
+                        class="flex flex-col justify-center items-center w-full mb-32 space-y-4 md:space-y-4"
                     >
                         <div class="flex justify-between w-full relative">
                             <h3 class="font-bold text-2xl ">{ "Telefonnummern" }</h3>
@@ -144,25 +144,26 @@ pub fn Clues() -> Html {
                     </div>
                     <div class="flex justify-center max-w-lg w-full mb-6">
                         <Link<Route>
-                            to={Route::Register}
-                            classes={classes!(
-                    "bg-primary",
-                    "hover",":bg-primary-dark",
-                    "hover",":text-white",
-                    "hover",":-translate-y-1",
-                    "hover",":cursor-pointer",
-                    "transition", "duration-150",
-                    "font-bold", "text-xl",
-                    "max-w-sm",
-                    "rounded-md",
-                    "text-black",
-                    "text-center",
-                    "w-full",
-                    "min-h-16",
-                    "h-16",
-                    "flex",
-                    "justify-center",
-                    "items-center",
+                            to={Route::Relationship}
+                            classes={classes!("bg-primary",
+                "hover:bg-primary-dark",
+                "hover:text-white",
+                "hover:-translate-y-1",
+                "hover:cursor-pointer",
+                "transition",
+                "duration-150",
+                "font-bold",
+                "text-xl",
+                "max-w-xl",
+                "rounded-md",
+                "text-black",
+                "text-center",
+                "w-full",
+                "min-h-16",
+                "h-16",
+                "flex",
+                "justify-center",
+                "items-center",
                                     )}
                         >
                             { "Weiter" }

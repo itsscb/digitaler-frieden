@@ -1,4 +1,4 @@
-use crate::pages::{Clues, Deceased, Home, Register, SignUp, Verify};
+use crate::pages::{Clues, Deceased, Home, Register, Relationship, SignUp, Verify};
 
 use yew::{function_component, html, Html};
 use yew_router::prelude::*;
@@ -17,6 +17,8 @@ pub enum Route {
     Clues,
     #[at("/register")]
     Register,
+    #[at("/relationship")]
+    Relationship,
 }
 
 fn route(routes: Route) -> Html {
@@ -24,6 +26,10 @@ fn route(routes: Route) -> Html {
         Route::Home => {
             html! { <Home /> }
         }
+        Route::Relationship => {
+            html! { <Relationship /> }
+        }
+
         Route::SignUp => {
             html! { <SignUp /> }
         }

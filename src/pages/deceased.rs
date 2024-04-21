@@ -117,10 +117,10 @@ pub fn Deceased() -> Html {
                     to={Route::Clues}
                     classes={yew::classes!(
     "bg-primary",
-                   "hover",":bg-primary-dark",
-                   "hover",":text-white",
-                   "hover",":-translate-y-1",
-                   "hover",":cursor-pointer",
+                   "hover:bg-primary-dark",
+                "hover:text-white",
+                "hover:-translate-y-1",
+                "hover:cursor-pointer",
                    "transition", "duration-150",
                    "font-bold", "text-xl",
                    "max-w-sm",

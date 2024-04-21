@@ -58,10 +58,10 @@ pub fn Verify() -> Html {
                         to={Route::Register}
                         classes={classes!(
                     "bg-primary",
-                    "hover",":bg-primary-dark",
-                    "hover",":text-white",
-                    "hover",":-translate-y-1",
-                    "hover",":cursor-pointer",
+                    "hover:bg-primary-dark",
+                    "hover:text-white",
+                    "hover:-translate-y-1",
+                    "hover:cursor-pointer",
                     "transition", "duration-150",
                     "font-bold", "text-xl",
                     "rounded-md",

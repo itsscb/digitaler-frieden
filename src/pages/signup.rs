@@ -63,32 +63,15 @@ pub fn SignUp() -> Html {
                     >
                         <Link<Route> to={Route::SignUp}>{ "Stattdessen anmelden" }</Link<Route>>
                     </div>
-                    <div
-                        class="bg-primary
-                hover:bg-primary-dark 
-                hover:text-white 
-                hover:-translate-y-1 
-                hover:cursor-pointer
-                transition duration-150 
-                font-bold text-xl 
-                max-w-36 
-                rounded-md 
-                text-black
-                text-center
-                w-full 
-                min-h-12 
-                h-12
-                flex justify-center items-center"
-                    >
                         <Link<Route>
                             to={Route::Verify}
                             classes={classes!(
     "bg-primary",
-                "hover",":bg-primary-dark",
-                "hover",":text-white",
-                "hover",":-translate-y-1",
-                "hover",":cursor-pointer",
-                "transition", "duration-150",
+                "hover:bg-primary-dark",
+                   "hover:text-white",
+                   "hover:-translate-y-1",
+                   "hover:cursor-pointer",
+                   "transition", "duration-150",
                 "font-bold", "text-xl",
                 "max-w-36",
                 "rounded-md",
@@ -102,7 +85,6 @@ pub fn SignUp() -> Html {
                         >
                             { "Weiter" }
                         </Link<Route>>
-                    </div>
                 </div>
             </div>
         </div>
