@@ -6,8 +6,8 @@ use crate::router::Route;
 #[function_component]
 pub fn Clues() -> Html {
     html! {
-        <div class="px-6 mt-4 md:mt-24">
-            <section id="navigation">
+        <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
+            <section id="navigation" class="mb-12">
             <h3
                 class="text-primary
                 hover:bg-text-dark 
@@ -16,10 +16,8 @@ pub fn Clues() -> Html {
                 hover:cursor-pointer
                 transition duration-150 
                 font-bold text-xl 
-                max-w-xl 
                 rounded-md 
                 text-black
-                w-full
                 absolute
                 top-4
                 left-4
@@ -46,8 +44,8 @@ pub fn Clues() -> Html {
                 class="absolute top-4 right-4 md:min-w-56 md:w-56 w-0"
             />
             </section>
-            <section class="fade-in" id="content">
-            <div class="mt-16 md:mt-32 flex flex-col items-center justify-between">
+            <section class="fade-in w-full max-w-lg" id="content">
+            <div class="flex flex-col items-center justify-between">
                 <div class="flex flex-col items-start">
                     <h3 class="text-3xl font-bold mb-4">{ "Spurhinweise hinzufügen" }</h3>
                     <p class="mb-6">
@@ -100,7 +98,7 @@ pub fn Clues() -> Html {
                         </div>
                     </div>
                     <div
-                        class="flex flex-col justify-center items-center w-full mb-32 space-y-4 md:space-y-4"
+                        class="flex flex-col justify-center items-center w-full mb-6 space-y-4 md:space-y-4"
                     >
                         <div class="flex justify-between w-full relative">
                             <h3 class="font-bold text-2xl ">{ "Telefonnummern" }</h3>
@@ -145,7 +143,10 @@ pub fn Clues() -> Html {
                             <p class="text-md">{ "+49 9876 543 210" }</p>
                         </div>
                     </div>
-                    <div class="flex justify-center max-w-lg w-full mb-6">
+                </div>
+            </div>
+            </section>
+            <section id="next" class="fade-in w-full flex justify-center max-w-lg mb-4">
                         <Link<Route>
                             to={Route::Relationship}
                             classes={classes!("bg-primary",
@@ -167,14 +168,12 @@ pub fn Clues() -> Html {
                 "flex",
                 "justify-center",
                 "items-center",
+                "mb-12",
                                     )}
                         >
                             { "Weiter" }
                         </Link<Route>>
-                    </div>
-                </div>
-            </div>
-            </section>
+                    </section>
         </div>
     }
 }

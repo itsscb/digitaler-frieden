@@ -8,8 +8,8 @@ pub fn Relationship() -> Html {
     let classes = classes!("fade-in");
 
     html! {
-        <div class="px-6 mt-4 md:mt-24 ">
-            <section id="navigation">
+        <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
+            <section id="navigation" class="mb-2 md:mb-32">
             <div class="flex justify-between">
                 <h3
                     class="text-primary
@@ -19,11 +19,10 @@ pub fn Relationship() -> Html {
                 hover:cursor-pointer
                 transition duration-150 
                 font-bold text-xl 
-                max-w-xl 
                 rounded-md 
                 text-black
-                w-full
                 absolute
+                text-center
                 top-4
                 left-4
             "
@@ -51,8 +50,8 @@ pub fn Relationship() -> Html {
             </div>
             </section>
             <section id="content" class={classes}>
-            <div class="mt-24 md:mt-32 flex flex-col items-center ">
-                <h3 class="text-3xl font-bold mb-6">
+            <div class="flex flex-col items-center ">
+                <h3 class="text-3xl font-bold mb-6 text-center">
                     { "In welcher Beziehung stehst du zu der verstorbenen Person?" }
                 </h3>
                 <div class="flex flex-col items-start min-w-72 md:w-auto mb-32">

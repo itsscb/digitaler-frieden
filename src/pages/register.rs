@@ -6,8 +6,8 @@ use crate::router::Route;
 #[function_component]
 pub fn Register() -> Html {
     html! {
-        <div class="px-6 mt-20">
-            <section id="navigation">
+        <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
+            <section id="navigation" class="mb-2 md:mb-12 lg:mb-0">
                 <h3
                 class="text-primary
                 hover:bg-text-dark 
@@ -16,10 +16,8 @@ pub fn Register() -> Html {
                 hover:cursor-pointer
                 transition duration-150 
                 font-bold text-xl 
-                max-w-xl 
                 rounded-md 
                 text-black
-                w-full
                 absolute
                 top-4
                 left-4
@@ -46,8 +44,8 @@ pub fn Register() -> Html {
                 class="absolute top-4 right-4 md:-w-56 md:w-56 md:h-auto w-0 h-0"
             />
             </section>
-            <section id="content" class="fade-in">
-            <div class="-height mt-12 flex flex-col items-center">
+            <section id="content" class="fade-in w-full max-w-lg">
+            <div class="flex flex-col items-start">
                 <h3 class="text-3xl font-bold mb-6">{ "Registrierung abschließen" }</h3>
                 <div class="group max-w-xl w-full mb-4">
                     <p class="text-start text-md mb-1">{ "Vorname" }</p>

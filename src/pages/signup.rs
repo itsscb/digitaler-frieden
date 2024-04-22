@@ -6,8 +6,9 @@ use crate::router::Route;
 #[function_component]
 pub fn SignUp() -> Html {
     html! {
-        <div class="h-full  px-6 mt-4">
-            <section id="navigation">
+            <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
+            <section id="navigation" class="mb-12">
+
             <h3
                 class="text-primary
                 hover:bg-text-dark 
@@ -16,10 +17,8 @@ pub fn SignUp() -> Html {
                 hover:cursor-pointer
                 transition duration-150 
                 font-bold text-xl 
-                max-w-xl 
                 rounded-md 
                 text-black
-                w-full
                 top-4
                 left-4
                 absolute
@@ -46,7 +45,7 @@ pub fn SignUp() -> Html {
                 class="top-4 right-4 absolute md:min-w-56 md:w-56 w-0"
             />
             </section>
-            <section id="content" class="fade-in">
+            <section id="content" class="w-full fade-in">
             <div class="min-height mt-64 md:flex md:flex-col md:items-center">
                 <h3 class="text-3xl font-bold mb-6">{ "Jetzt registrieren" }</h3>
                 <p>{ "Gib deine E-Mail Adresse ein." }</p>
