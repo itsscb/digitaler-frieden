@@ -9,7 +9,7 @@ pub fn Register() -> Html {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
             <section id="navigation" class="mb-2 md:mb-12 lg:mb-0">
                 <h3
-                class="text-primary
+                    class="text-primary
                 hover:bg-text-dark 
                 hover:text-white 
                 hover:-translate-y-1 
@@ -22,91 +22,94 @@ pub fn Register() -> Html {
                 top-4
                 left-4
             "
-            >
-                <Link<Route> to={Route::SignUp}>
-                    <div class="flex items-center">
-                        <svg
-                            class="w-8 "
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                        </svg>
-                        { "Zurück" }
-                    </div>
-                </Link<Route>>
-            </h3>
-            <img
-                src="public/digitaler-frieden_logo.jpg"
-                alt="logo digitaler frieden"
-                class="absolute top-4 right-4 md:-w-56 md:w-56 md:h-auto w-0 h-0"
-            />
+                >
+                    <Link<Route> to={Route::SignUp}>
+                        <div class="flex items-center">
+                            <svg
+                                class="w-8 "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            </svg>
+                            { "Zurück" }
+                        </div>
+                    </Link<Route>>
+                </h3>
+                <img
+                    src="public/digitaler-frieden_logo.jpg"
+                    alt="logo digitaler frieden"
+                    class="absolute top-4 right-4 md:-w-56 md:w-56 md:h-auto w-0 h-0"
+                />
             </section>
             <section id="content" class="fade-in w-full max-w-lg">
-            <div class="flex flex-col items-start">
-                <h3 class="text-3xl font-bold mb-6">{ "Registrierung abschließen" }</h3>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Vorname" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2]  active:bg-[#33d9b2] border-b text-center focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Nachname" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <div class="flex justify-between space-x-4">
-                        <div class="w-full">
-                            <p class="text-start text-md mb-1">{ "Straße" }</p>
-                            <input
-                                class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                                type="text"
-                            />
-                        </div>
-                        <div class="w-24">
-                            <p class="text-start text-md mb-1 w-16">{ "Nr." }</p>
-                            <input
-                                class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                                type="text"
-                            />
+                <div class="flex flex-col items-start">
+                    <h3 class="text-3xl font-bold mb-6">{ "Registrierung abschließen" }</h3>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Vorname" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2]  active:bg-[#33d9b2] border-b text-center focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Nachname" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <div class="flex justify-between space-x-4">
+                            <div class="w-full">
+                                <p class="text-start text-md mb-1">{ "Straße" }</p>
+                                <input
+                                    class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                                    type="text"
+                                />
+                            </div>
+                            <div class="w-24">
+                                <p class="text-start text-md mb-1 w-16">{ "Nr." }</p>
+                                <input
+                                    class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                                    type="text"
+                                />
+                            </div>
                         </div>
                     </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Postleitzahl" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Ort" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Telefonnummer" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
+                    <div class="group max-w-xl w-full mb-4">
+                        <p class="text-start text-md mb-1">{ "Geburtsort" }</p>
+                        <input
+                            class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
+                            type="text"
+                        />
+                    </div>
                 </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Postleitzahl" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Ort" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Telefonnummer" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
-                <div class="group max-w-xl w-full mb-4">
-                    <p class="text-start text-md mb-1">{ "Geburtsort" }</p>
-                    <input
-                        class="duration-700 font-bold text-md transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-b text-center  focus-within:text-black w-full h-10 rounded-md"
-                        type="text"
-                    />
-                </div>
+            </section>
+            <section id="next" class="fade-in mb-6 w-full flex justify-center items-center">
                 <Link<Route>
                     to={Route::Deceased}
                     classes={classes!(
@@ -123,12 +126,11 @@ pub fn Register() -> Html {
                 "text-center",
                 "w-full",
                 "h-16",
-                "mt-20", "flex", "justify-center", "items-center",
+                "mb-12","flex", "justify-center", "items-center",
                             )}
                 >
                     { "Weiter" }
                 </Link<Route>>
-            </div>
             </section>
         </div>
     }

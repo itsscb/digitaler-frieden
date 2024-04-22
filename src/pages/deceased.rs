@@ -116,7 +116,7 @@ pub fn Deceased() -> Html {
                     </div>
                 </div>
             </section>
-            <section id="next" class="w-full fade-in flex justify-center max-w-lg ">
+            <section id="next" class="w-full fade-in flex justify-center max-w-lg mb-6">
                 <Link<Route>
                     to={Route::Clues}
                     classes={yew::classes!(
