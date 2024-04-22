@@ -886,7 +886,7 @@ video {
 
 .fade-in{
   position:relative;
-  animation:fadein 1s
+  animation:fadein 0.4s
 }
 
 @keyframes fadein{
@@ -903,7 +903,7 @@ video {
 
 .fade-out{
   position:relative;
-  animation:fadeout 1s
+  animation:fadeout 0.4s
 }
 
 @keyframes fadeout{

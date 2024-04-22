@@ -7,6 +7,7 @@ use crate::router::Route;
 pub fn Clues() -> Html {
     html! {
         <div class="px-6 mt-4 md:mt-24">
+            <section id="navigation">
             <h3
                 class="text-primary
                 hover:bg-text-dark 
@@ -24,7 +25,7 @@ pub fn Clues() -> Html {
                 left-4
             "
             >
-                <Link<Route> to={Route::SignUp}>
+                <Link<Route> to={Route::Deceased}>
                     <div class="flex items-center">
                         <svg
                             class="w-8 "
@@ -44,6 +45,8 @@ pub fn Clues() -> Html {
                 alt="logo digitaler frieden"
                 class="absolute top-4 right-4 md:min-w-56 md:w-56 w-0"
             />
+            </section>
+            <section class="fade-in" id="content">
             <div class="mt-16 md:mt-32 flex flex-col items-center justify-between">
                 <div class="flex flex-col items-start">
                     <h3 class="text-3xl font-bold mb-4">{ "Spurhinweise hinzufügen" }</h3>
@@ -171,6 +174,7 @@ pub fn Clues() -> Html {
                     </div>
                 </div>
             </div>
+            </section>
         </div>
     }
 }

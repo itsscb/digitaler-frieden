@@ -11,12 +11,12 @@ pub enum Route {
     SignUp,
     #[at("/verify")]
     Verify,
+    #[at("/register")]
+    Register,
     #[at("/deceased")]
     Deceased,
     #[at("/clues")]
     Clues,
-    #[at("/register")]
-    Register,
     #[at("/relationship")]
     Relationship,
 }
@@ -26,24 +26,23 @@ fn route(routes: Route) -> Html {
         Route::Home => {
             html! { <Home /> }
         }
-        Route::Relationship => {
-            html! { <Relationship /> }
-        }
-
         Route::SignUp => {
             html! { <SignUp /> }
         }
         Route::Verify => {
             html! { <Verify /> }
         }
-        Route::Clues => {
-            html! { <Clues /> }
+        Route::Register => {
+            html! { <Register /> }
         }
         Route::Deceased => {
             html! { <Deceased /> }
         }
-        Route::Register => {
-            html! { <Register /> }
+        Route::Clues => {
+            html! { <Clues /> }
+        }
+        Route::Relationship => {
+            html! { <Relationship /> }
         }
     }
 }

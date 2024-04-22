@@ -53,7 +53,7 @@ pub fn Relationship() -> Html {
             <section id="content" class={classes}>
             <div class="mt-24 md:mt-32 flex flex-col items-center ">
                 <h3 class="text-3xl font-bold mb-6">
-                    { "In welcher Beziehung stehen Sie zu der verstorbenen Person?" }
+                    { "In welcher Beziehung stehst du zu der verstorbenen Person?" }
                 </h3>
                 <div class="flex flex-col items-start min-w-72 md:w-auto mb-32">
                     <div class="flex items-center mb-4">
@@ -78,9 +78,9 @@ pub fn Relationship() -> Html {
                         />
                         <label for="relationship-soleheir" class="ms-2">
                             <p>
-                                { "Ich bin notarielle " }
+                                { "Ich bin notarielle(r) " }
                                 <u>
-                                    <strong>{ "Alleinerbin" }</strong>
+                                    <strong>{ "Alleinerbin / Alleinerbe" }</strong>
                                 </u>
                             </p>
                         </label>

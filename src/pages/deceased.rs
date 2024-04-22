@@ -7,6 +7,7 @@ use crate::router::Route;
 pub fn Deceased() -> Html {
     html! {
         <div class="px-6 mt-20">
+            <section id="navigation">
             <h3
                 class="text-primary
                 hover:bg-text-dark
@@ -24,7 +25,7 @@ pub fn Deceased() -> Html {
                 left-4
             "
             >
-                <Link<Route> to={Route::Home}>
+                <Link<Route> to={Route::Register}>
                     <div class="flex items-center">
                         <svg
                             class="w-8 "
@@ -44,6 +45,8 @@ pub fn Deceased() -> Html {
                 alt="logo digitaler frieden"
                 class="absolute top-4 right-4 md:-w-56 md:w-56 md:h-auto w-0 h-0"
             />
+            </section>
+            <section class="fade-in" id="content">
             <div class="-height mt-12 flex flex-col items-center">
                 <h3 class="text-3xl font-bold mb-6">{ "Verstorbene Person" }</h3>
                 <div class="group max-w-xl w-full mb-4">
@@ -135,6 +138,7 @@ pub fn Deceased() -> Html {
                     { "Weiter" }
                 </Link<Route>>
             </div>
-        </div>
+        </section>
+            </div>
     }
 }

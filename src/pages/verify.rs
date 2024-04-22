@@ -7,7 +7,7 @@ use crate::router::Route;
 pub fn Verify() -> Html {
     html! {
         <div class="px-6 mt-4 md:mt-24">
-            <div class="flex justify-between">
+            <section id="navigation">
                 <h3
                     class="text-primary
                 hover:bg-text-dark 
@@ -45,8 +45,9 @@ pub fn Verify() -> Html {
                     alt="logo digitaler frieden"
                     class="absolute top-4 right-4 md:min-w-56 md:w-56 w-0"
                 />
-            </div>
-            <div class="mt-24 md:mt-32 flex flex-col items-center">
+                </section>
+                <section id="content" class="fade-in">
+            <div class="mt-64 flex flex-col items-center">
                 <h3 class="text-3xl font-bold mb-6">{ "Verifizieren" }</h3>
                 <div class="flex flex-col items-start min-w-72 md:w-auto">
                     <p class="mb-3">{ "Bitte verifiziere deine E-Mail Adresse." }</p>
@@ -91,6 +92,7 @@ pub fn Verify() -> Html {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+            </div>
     }
 }

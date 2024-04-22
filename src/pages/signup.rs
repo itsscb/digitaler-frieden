@@ -7,6 +7,7 @@ use crate::router::Route;
 pub fn SignUp() -> Html {
     html! {
         <div class="h-full  px-6 mt-4">
+            <section id="navigation">
             <h3
                 class="text-primary
                 hover:bg-text-dark 
@@ -44,6 +45,8 @@ pub fn SignUp() -> Html {
                 alt="logo digitaler frieden"
                 class="top-4 right-4 absolute md:min-w-56 md:w-56 w-0"
             />
+            </section>
+            <section id="content" class="fade-in">
             <div class="min-height mt-64 md:flex md:flex-col md:items-center">
                 <h3 class="text-3xl font-bold mb-6">{ "Jetzt registrieren" }</h3>
                 <p>{ "Gib deine E-Mail Adresse ein." }</p>
@@ -87,6 +90,6 @@ pub fn SignUp() -> Html {
                         </Link<Route>>
                 </div>
             </div>
-        </div>
+        </section></div>
     }
 }
