@@ -2,6 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+.logo {
+  @apply absolute;
+}
+
+.logo-fadein-right {
+  position:relative;
+  animation: logo-fadein-right 1s ;
+}
+
+@keyframes logo-fadein-right {
+  0% {
+    transform: translateX(-200%);
+    opacity: 0;
+  }
+  70%{
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  80%{
+    opacity: 1;
+  }
+  90%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+.logo-fadein-left {
+  position: relative;
+  animation: logo-fadein-left 1s;
+}
+
+@keyframes logo-fadein-left {
+  0% {
+    transform: translateX(500%);
+    opacity: 0;
+  }
+  70%{
+    opacity: 0.7;
+  }
+  80%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  90%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes logo-fadein-left {
+  from{
+    left: -200%;
+    opacity: 0.5;
+  }
+  to{
+    left: 0;
+    opacity: 1;
+  }
+}
+
+
 .fade-in{
   position:relative;
 animation:fadein 0.4s}
@@ -30,45 +96,6 @@ opacity:1}
   position:relative;
   animation:mail-animation 2s infinite;
 }
-/*
-@keyframes mail-animation {
-  0%, 10%{
-    top:0;
-    left:0;
-    transform: rotate(15deg);
-  }
-  50% {
-    left:22%;
-    top:15%;
-    transform: rotate(-15deg);
-  }
-  55% {
-    left:22%;
-    top:15%;
-    transform: rotate(-20deg);
-  }
-  60% {
-    left:22%;
-    top:15%;
-    transform: rotate(-25deg);
-  }
-  70% {
-    left:22%;
-    top:15%;
-    transform: rotate(-25deg);
-  }
-  70% {
-    left:22%;
-    top:15%;
-    transform: rotate(-25deg);
-  }
-  to {
-    top:-15%;
-    left:70%;
-    transform: rotate(-15deg);
-  }
-} */
-
 @keyframes mail-animation {
   0% {
     left: -20%;
