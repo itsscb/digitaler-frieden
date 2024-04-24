@@ -1,0 +1,15 @@
+{
+  "name": "Digitaler Frieden",
+  "short_name": "Digitaler Frieden",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000",
+  "description": "Digitale Spuren entfernen per Knopfdruck",
+  "categories": [
+    "utilities"
+  ],
+  "icons": [
+    "public/favicon.ico"
+  ],
+  "orientation": "portrait-primary"
+}
