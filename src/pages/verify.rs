@@ -2,9 +2,14 @@ use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
 use crate::router::Route;
+use crate::storage;
 
 #[function_component]
 pub fn Verify() -> Html {
+    let (state, _) = yewdux::use_store::<storage::UserData>();
+    let resend_onclick = yew::Callback::from(move |_| {
+        gloo_console::log!(format!("Resending E-Mail to '{:?}'", state.email_address()));
+    });
     html! {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
             <section id="navigation" class="mb-2 md:mb-12 lg:mb-0">
@@ -107,7 +112,8 @@ pub fn Verify() -> Html {
                     transition duration-150 
                     "
                         >
-                            <Link<Route> to={Route::SignUp}>{ "Erneut senden" }</Link<Route>>
+                            <button onclick={resend_onclick}>{ "Erneut senden" }</button>
+                            //<Link<Route> to={Route::SignUp}>{ "Erneut senden" }</Link<Route>>
                         </div>
                     </div>
                 </div>

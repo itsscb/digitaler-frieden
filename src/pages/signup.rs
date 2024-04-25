@@ -1,10 +1,15 @@
-use crate::router::Route;
+use crate::{
+    router::Route,
+    storage::{self, UserData},
+};
 use web_sys::HtmlInputElement;
 use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
 #[function_component]
 pub fn SignUp() -> Html {
+    let (_, dispatch) = yewdux::use_store::<UserData>();
+
     let register = yew::functional::use_state(|| true);
     let reg = register.clone();
     let reg_onchange = yew::Callback::from(move |_| {
@@ -26,10 +31,13 @@ pub fn SignUp() -> Html {
     let email: yew::NodeRef = yew::NodeRef::default();
     let mail = email.clone();
     let onchange = yew::Callback::from(move |_| {
+        let dispatch = dispatch.clone();
         if let Some(m) = mail.cast::<HtmlInputElement>() {
             // TODO: Remove as soon as the Logic is implemented.
             gloo_console::log!(format!("E-Mail: {}", m.value()));
+
             if !m.value().is_empty() {
+                storage::set_email_address(dispatch, Some(m.value()));
                 mc.set(false);
             } else {
                 mc.set(true);
