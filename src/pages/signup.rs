@@ -5,16 +5,29 @@ use yew_router::components::Link;
 
 #[function_component]
 pub fn SignUp() -> Html {
-    let email: yew::NodeRef = yew::NodeRef::default();
-    // let password = yew::functional::use_state(String::new);
-    // let pwd = password.clone();
+    let register = yew::functional::use_state(|| true);
+    let reg = register.clone();
+    let reg_onchange = yew::Callback::from(move |_| {
+        reg.set(!*reg);
+    });
+
+    let password: yew::NodeRef = yew::NodeRef::default();
+    let pwd = password.clone();
+    let pwd_onchange = yew::Callback::from(move |_| {
+        if let Some(p) = pwd.cast::<HtmlInputElement>() {
+            // TODO: Remove as soon as the Logic is implemented.
+            gloo_console::log!(format!("Password: {}", p.value()));
+        }
+    });
+
     let mail_check = yew::functional::use_state(|| true);
     let mc = mail_check.clone();
+
+    let email: yew::NodeRef = yew::NodeRef::default();
     let mail = email.clone();
     let onchange = yew::Callback::from(move |_| {
-        // let pwd = pwd.clone();
-
         if let Some(m) = mail.cast::<HtmlInputElement>() {
+            // TODO: Remove as soon as the Logic is implemented.
             gloo_console::log!(format!("E-Mail: {}", m.value()));
             if !m.value().is_empty() {
                 mc.set(false);
@@ -22,7 +35,6 @@ pub fn SignUp() -> Html {
                 mc.set(true);
             }
         };
-        // pwd.set(v);
     });
     html! {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
@@ -75,56 +87,124 @@ pub fn SignUp() -> Html {
             </section>
             <section id="content" class="w-full fade-in">
                 <div class="min-height mt-64 md:flex md:flex-col md:items-center">
-                    <h3 class="text-3xl font-bold mb-6">{ "Jetzt registrieren" }</h3>
-                    <div class="group max-w-xl w-full mb-4">
+                    <h3 class="text-3xl font-bold mb-6">
+                        { "Jetzt " }
+                        { register.then(||Some("registrieren")).unwrap_or(Some("einloggen")).unwrap() }
+                    </h3>
+                    <div
+                        class={classes!(
+                        "group",
+                         "max-w-xl",
+                         "w-full",
+                         "mb-4",
+                     )}
+                    >
                         <label for="email">{ "Gib deine E-Mail Adresse ein." }</label>
                         <input
                             id="email"
                             ref={email}
                             onchange={onchange}
-                            class="duration-700 font-bold text-lg transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-2 text-center text-primary focus-within:text-black w-full h-16 mt-4 rounded-md"
+                            class={classes!(
+                                "duration-700",
+                                "font-bold",
+                                "text-lg",
+                                "transition",
+                                "group-hover:cursor-pointer",
+                                "bg-transparent",
+                                "border-white",
+                                "hover:border-[#33d9b2]",
+                                "hover:curser-pointer",
+                                "focus-within:bg-[#33d9b2]",
+                                "active:bg-[#33d9b2]",
+                                "border-2",
+                                "text-center",
+                                "text-primary",
+                                "focus-within:text-black",
+                                "w-full",
+                                "h-16",
+                                "mt-4",
+                                "rounded-md","visible"
+                                )}
                             type="text"
                         />
                     </div>
-                    <div hidden={*mail_check} class="group max-w-xl w-full mb-4">
-                        <label for="password">{ "Gib deinem Konto ein Passwort" }</label>
+                    <div class={classes!("group","max-w-xl","mb-4","w-full",)}>
+                        <label for="password">
+                            { register.then(||Some("Gib deinem Konto ein Passwort.")).unwrap_or(Some("Gib dein Passwort ein.")).unwrap() }
+                        </label>
                         <input
+                            ref={password}
+                            onchange={pwd_onchange}
                             id="password"
-                            class="duration-700 font-bold text-lg transition group-hover:cursor-pointer bg-transparent border-white hover:border-[#33d9b2] hover:curser-pointer focus-within:bg-[#33d9b2] active:bg-[#33d9b2] border-2 text-center text-primary focus-within:text-black w-full h-16 mt-4 rounded-md"
+                            class={classes!(
+                                   "duration-700",
+                                   "font-bold",
+                                   "text-lg",
+                                   "transition",
+                                   "group-hover:cursor-pointer",
+                                   "bg-transparent",
+                                   "border-white",
+                                   "hover:border-[#33d9b2]",
+                                   "hover:curser-pointer",
+                                   "focus-within:bg-[#33d9b2]",
+                                   "active:bg-[#33d9b2]",
+                                   "border-2",
+                                   "text-center",
+                                   "text-primary",
+                                   "focus-within:text-black",
+                                   "w-full",
+                                   "h-16",
+                                   "mt-4",
+                                   "rounded-md",
+                                   )}
                             type="text"
                         />
                     </div>
-                    <div class="flex justify-between max-w-xl w-full">
+                    <div
+                        class={classes!(
+                            "flex",
+                            "justify-between",
+                            "max-w-xl",
+                            "w-full",
+                            )}
+                    >
                         <div
-                            class="text-primary hover:text-white
-                hover:-translate-y-1 
-                hover:cursor-pointer
-                transition duration-150 
-                "
+                            class={classes!(
+                                        "text-primary",
+                                        "hover:text-white",
+                                        "hover:-translate-y-1",
+                                        "hover:cursor-pointer",
+                                        "transition",
+                                        "duration-150",
+                                        )}
                         >
-                            <Link<Route> to={Route::SignUp}>{ "Stattdessen anmelden" }</Link<Route>>
+                            <button onclick={reg_onchange}>
+                                { "Stattdessen " }
+                                { register.then(||Some("anmelden")).unwrap_or(Some("registrieren")).unwrap() }
+                            </button>
+                            // <Link<Route> to={Route::SignUp}>{ "Stattdessen anmelden" }</Link<Route>>
                         </div>
                         <Link<Route>
                             to={Route::Verify}
                             classes={classes!(
-        "bg-primary",
-                    "hover:bg-primary-dark",
-                       "hover:text-white",
-                       "hover:-translate-y-1",
-                       "hover:cursor-pointer",
-                       "transition", "duration-150",
-                    "font-bold", "text-xl",
-                    "max-w-36",
-                    "rounded-md",
-                    "text-black",
-                    "text-center",
-                    "w-full",
-                    "min-h-12",
-                    "h-12",
-                    "flex", "justify-center", "items-center","mb-12"
-                                    )}
+           "bg-primary",
+                       "hover:bg-primary-dark",
+                          "hover:text-white",
+                          "hover:-translate-y-1",
+                          "hover:cursor-pointer",
+                          "transition", "duration-150",
+                       "font-bold", "text-xl",
+                       "max-w-36",
+                       "rounded-md",
+                       "text-black",
+                       "text-center",
+                       "w-full",
+                       "min-h-12",
+                       "h-12",
+                       "flex", "justify-center", "items-center","mb-12"
+                                       )}
                         >
-                            { "Weiter" }
+                            { register.then(||Some("Weiter")).unwrap_or(Some("Anmelden")).unwrap() }
                         </Link<Route>>
                     </div>
                 </div>
