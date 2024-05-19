@@ -5,6 +5,7 @@ use crate::router::Route;
 
 #[function_component]
 pub fn Clues() -> Html {
+    let mail: Vec<String> = vec![];
     html! {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
             <section id="navigation" class="mb-12">
@@ -66,6 +67,7 @@ pub fn Clues() -> Html {
                         >
                             <div class="flex justify-between w-full relative">
                                 <h3 class="font-bold text-2xl ">{ "E-Mail Adressen" }</h3>
+                                <button>
                                 <svg
                                     class="text-primary w-10 absolute right-4"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +79,7 @@ pub fn Clues() -> Html {
                                         d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
                                     />
                                 </svg>
+                                </button>
                             </div>
                             <div class="flex justify-start items-center space-x-4 w-full">
                                 <svg
