@@ -5,7 +5,30 @@ use crate::router::Route;
 
 #[function_component]
 pub fn Clues() -> Html {
-    let mail: Vec<String> = vec![];
+    // let mails = yew::use_state(|| vec![]);
+    // let mail_input = yew::NodeRef::default();    
+    // let mail_handle = yew::use_state(String::new);
+    // let mail = (*mail_handle).clone();
+    // let on_mail_add = {
+    //     let mail_handle = mail_handle.clone();
+    //     let mail = mail.clone();
+    //     let mails = mails.clone();
+    //     yew::Callback::from(move |_| { 
+    //         let mut new_mails = mails.to_vec();
+    //         new_mails.push(mail.to_string());
+    //         gloo_console::log!(format!("New Mail: {:?}", mail));
+    //         mails.set(
+    //             // mails.push(
+    //             //     mail.to_string()
+    //             // )
+    //             new_mails
+    //         );
+    //         println!("{:?}",mails);
+    //         gloo_console::log!(format!("Mails: {:?}", mails));
+    //         mail_handle.set("".to_owned());
+    //     })
+    // };
+
     html! {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
             <section id="navigation" class="mb-12">
@@ -67,9 +90,40 @@ pub fn Clues() -> Html {
                         >
                             <div class="flex justify-between w-full relative">
                                 <h3 class="font-bold text-2xl ">{ "E-Mail Adressen" }</h3>
-                                <button>
+                            </div>
+                            <div class="flex justify-center items-center space-x-4 w-full">
+                        <input
+                            id="email"
+                            // value={mail.clone()}
+                            // ref={mail_input}
+                            // onchange={onchange}
+                            class={classes!(
+                                "duration-700",
+                                "font-bold",
+                                "text-lg",
+                                "transition",
+                                "group-hover:cursor-pointer",
+                                "bg-transparent",
+                                "border-white",
+                                "hover:border-[#33d9b2]",
+                                "hover:curser-pointer",
+                                "focus-within:bg-[#33d9b2]",
+                                "active:bg-[#33d9b2]",
+                                "border-2",
+                                "text-center",
+                                "text-primary",
+                                "focus-within:text-black",
+                                "w-full",
+                                "h-16",
+                                "rounded-md","visible"
+                                )}
+                            type="text"
+                        />
+                                <button 
+                                // onclick={on_mail_add}
+                                >
                                 <svg
-                                    class="text-primary w-10 absolute right-4"
+                                    class="text-primary w-16"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
                                     fill="currentColor"
