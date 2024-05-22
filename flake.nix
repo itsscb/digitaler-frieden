@@ -55,6 +55,8 @@
           packages = (with pkgs; [
             # The package provided by our custom overlay. Includes cargo, Clippy, cargo-fmt,
             # rustdoc, rustfmt, and other tools.
+            rust-analyzer
+            clippy
             trunk
             tailwindcss
             rustToolchain
