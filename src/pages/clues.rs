@@ -5,29 +5,60 @@ use crate::router::Route;
 
 #[function_component]
 pub fn Clues() -> Html {
-    // let mails = yew::use_state(|| vec![]);
-    // let mail_input = yew::NodeRef::default();    
-    // let mail_handle = yew::use_state(String::new);
-    // let mail = (*mail_handle).clone();
-    // let on_mail_add = {
-    //     let mail_handle = mail_handle.clone();
-    //     let mail = mail.clone();
-    //     let mails = mails.clone();
-    //     yew::Callback::from(move |_| { 
-    //         let mut new_mails = mails.to_vec();
-    //         new_mails.push(mail.to_string());
-    //         gloo_console::log!(format!("New Mail: {:?}", mail));
-    //         mails.set(
-    //             // mails.push(
-    //             //     mail.to_string()
-    //             // )
-    //             new_mails
-    //         );
-    //         println!("{:?}",mails);
-    //         gloo_console::log!(format!("Mails: {:?}", mails));
-    //         mail_handle.set("".to_owned());
-    //     })
-    // };
+    let mails = yew::use_state(|| vec![]);
+    let mails_callback = mails.clone();
+
+    let mail = yew::NodeRef::default();
+    let on_mail_add: yew::Callback<yew::MouseEvent> = {
+        let mail = mail.clone();
+        yew::Callback::from(move |_| {
+            if let Some(input) = mail.cast::<web_sys::HtmlInputElement>() {
+                let mut m = mails_callback.to_vec();
+                let mail = input.value();
+                if !mail.is_empty() && !m.contains(&mail) {
+                    m.push(mail);
+                    input.set_value("");
+                }
+                mails_callback.set(m);
+            };
+        })
+    };
+
+    let on_mail_remove = {
+        let mails = mails.clone();
+        yew::Callback::from(move |index| {
+            let mut new = (*mails).clone();
+            new.remove(index);
+            mails.set(new);
+        })
+    };
+    let phones = yew::use_state(|| vec![]);
+    let phones_callback = phones.clone();
+
+    let phone = yew::NodeRef::default();
+    let on_phone_add: yew::Callback<yew::MouseEvent> = {
+        let phone = phone.clone();
+        yew::Callback::from(move |_| {
+            if let Some(input) = phone.cast::<web_sys::HtmlInputElement>() {
+                let mut m = phones_callback.to_vec();
+                let phone = input.value();
+                if !phone.is_empty() && !m.contains(&phone) {
+                    m.push(phone);
+                    input.set_value("");
+                }
+                phones_callback.set(m);
+            };
+        })
+    };
+
+    let on_phone_remove = {
+        let phones = phones.clone();
+        yew::Callback::from(move |index| {
+            let mut new = (*phones).clone();
+            new.remove(index);
+            phones.set(new);
+        })
+    };
 
     html! {
         <div class="flex flex-col justify-center items-center h-full space-y-16 px-8 m-0">
@@ -92,12 +123,10 @@ pub fn Clues() -> Html {
                                 <h3 class="font-bold text-2xl ">{ "E-Mail Adressen" }</h3>
                             </div>
                             <div class="flex justify-center items-center space-x-4 w-full">
-                        <input
-                            id="email"
-                            // value={mail.clone()}
-                            // ref={mail_input}
-                            // onchange={onchange}
-                            class={classes!(
+                                <input
+                                    id="email"
+                                    ref={mail}
+                                    class={classes!(
                                 "duration-700",
                                 "font-bold",
                                 "text-lg",
@@ -117,26 +146,26 @@ pub fn Clues() -> Html {
                                 "h-16",
                                 "rounded-md","visible"
                                 )}
-                            type="text"
-                        />
-                                <button 
-                                // onclick={on_mail_add}
-                                >
-                                <svg
-                                    class="text-primary w-16"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                                    />
-                                </svg>
+                                    type="text"
+                                />
+                                <button onclick={on_mail_add}>
+                                    <svg
+                                        class="text-primary w-16"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                                        />
+                                    </svg>
                                 </button>
                             </div>
+                            { mails.iter().enumerate().map(|(index,item)| {
+                                html! {
                             <div class="flex justify-start items-center space-x-4 w-full">
-                                <svg
+                                        <button onclick={on_mail_remove.reform(move |_| index)}>                                <svg
                                     class="w-10 text-danger"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
@@ -147,42 +176,62 @@ pub fn Clues() -> Html {
                                         d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
                                     />
                                 </svg>
-                                <p class="text-md">{ "max.mustermann@example.com" }</p>
+                                        </button>
+                                <p class="text-md">{ item}</p>
                             </div>
-                            <div class="flex justify-start items-center w-full space-x-4">
-                                <svg
-                                    class="w-10 text-danger"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                                    />
-                                </svg>
-                                <p class="text-md">{ "jon.doe@blub.com" }</p>
-                            </div>
+                                }
+                            }).collect::<Html>() }
                         </div>
                         <div
                             class="flex flex-col justify-center items-center w-full mb-6 space-y-4 md:space-y-4"
                         >
                             <div class="flex justify-between w-full relative">
                                 <h3 class="font-bold text-2xl ">{ "Telefonnummern" }</h3>
-                                <svg
-                                    class="text-primary w-10 absolute right-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                                    />
-                                </svg>
                             </div>
+                            <div class="flex justify-center items-center space-x-4 w-full">
+                                <input
+                                    id="phone"
+                                    ref={phone}
+                                    class={classes!(
+                                "duration-700",
+                                "font-bold",
+                                "text-lg",
+                                "transition",
+                                "group-hover:cursor-pointer",
+                                "bg-transparent",
+                                "border-white",
+                                "hover:border-[#33d9b2]",
+                                "hover:curser-pointer",
+                                "focus-within:bg-[#33d9b2]",
+                                "active:bg-[#33d9b2]",
+                                "border-2",
+                                "text-center",
+                                "text-primary",
+                                "focus-within:text-black",
+                                "w-full",
+                                "h-16",
+                                "rounded-md","visible"
+                                )}
+                                    type="text"
+                                />
+                                <button onclick={on_phone_add}>
+                                    <svg
+                                        class="text-primary w-16"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            { phones.iter().enumerate().map(|(index,item)| {
+                                html! {
                             <div class="flex justify-start items-center space-x-4 w-full">
-                                <svg
+                                        <button onclick={on_phone_remove.reform(move |_| index)}>                                <svg
                                     class="w-10 text-danger"
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
@@ -193,22 +242,11 @@ pub fn Clues() -> Html {
                                         d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
                                     />
                                 </svg>
-                                <p class="text-md">{ "+49 1234 567 890" }</p>
+                                        </button>
+                                <p class="text-md">{ item}</p>
                             </div>
-                            <div class="flex justify-start items-center w-full space-x-4">
-                                <svg
-                                    class="w-10 text-danger"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                                    />
-                                </svg>
-                                <p class="text-md">{ "+49 9876 543 210" }</p>
-                            </div>
+                                }
+                            }).collect::<Html>() }
                         </div>
                     </div>
                 </div>
