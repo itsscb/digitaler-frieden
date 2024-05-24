@@ -272,7 +272,7 @@ pub fn Clues() -> Html {
             </section>
             <section id="next" class="fade-in w-full flex justify-center max-w-lg mb-4">
                 <Link<Route>
-                    to={Route::Relationship}
+                    to={Route::Documents}
                     classes={classes!(
                         "bg-primary",
                         "hover:bg-primary-dark",

@@ -936,16 +936,16 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper6534 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 711, __wbg_adapter_40);
+    imports.wbg.__wbindgen_closure_wrapper6624 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 740, __wbg_adapter_40);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper8417 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 839, __wbg_adapter_43);
+    imports.wbg.__wbindgen_closure_wrapper8507 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 868, __wbg_adapter_43);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper8614 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 852, __wbg_adapter_46);
+    imports.wbg.__wbindgen_closure_wrapper8704 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 881, __wbg_adapter_46);
         return addHeapObject(ret);
     };
 
@@ -988,7 +988,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('digitaler-frieden-0f443414bd108417282961b2a7ed017b22de829a3fb8f586fe6d512339ae7333c5c15674156a782cc70b2df0627f26c6_bg.wasm', import.meta.url);
+        input = new URL('digitaler-frieden-23bb9eba3fb849f290b6e7e45997c57afdeccc3b773f7f82ee309a94e1387dda091e56509bc08920e251645096b7194c_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

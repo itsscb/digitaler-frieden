@@ -16,5 +16,8 @@ pub use relationship::Relationship;
 mod register;
 pub use register::Register;
 
+mod documents;
+pub use documents::Documents;
+
 mod home;
 pub use home::Home;

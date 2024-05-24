@@ -3,6 +3,7 @@ module.exports = {
         mode: "all",
         content: [
             "./src/**/*.rs",
+            "./src/pages/documents.rs",
             "./index.html",
             "./src/**/*.html",
             "./src/**/*.css",
