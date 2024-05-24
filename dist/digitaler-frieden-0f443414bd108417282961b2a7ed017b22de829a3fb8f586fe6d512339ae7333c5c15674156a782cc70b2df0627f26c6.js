@@ -600,6 +600,13 @@ function __wbg_get_imports() {
     imports.wbg.__wbg_pushState_b8e8d346f8bb33fd = function() { return handleError(function (arg0, arg1, arg2, arg3, arg4, arg5) {
         getObject(arg0).pushState(getObject(arg1), getStringFromWasm0(arg2, arg3), arg4 === 0 ? undefined : getStringFromWasm0(arg4, arg5));
     }, arguments) };
+    imports.wbg.__wbg_key_dccf9e8aa1315a8e = function(arg0, arg1) {
+        const ret = getObject(arg1).key;
+        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        getInt32Memory0()[arg0 / 4 + 1] = len1;
+        getInt32Memory0()[arg0 / 4 + 0] = ptr1;
+    };
     imports.wbg.__wbg_setchecked_931ff2ed2cd3ebfd = function(arg0, arg1) {
         getObject(arg0).checked = arg1 !== 0;
     };
@@ -929,16 +936,16 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper6475 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 695, __wbg_adapter_40);
+    imports.wbg.__wbindgen_closure_wrapper6534 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 711, __wbg_adapter_40);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper8356 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 823, __wbg_adapter_43);
+    imports.wbg.__wbindgen_closure_wrapper8417 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 839, __wbg_adapter_43);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper8553 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 836, __wbg_adapter_46);
+    imports.wbg.__wbindgen_closure_wrapper8614 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 852, __wbg_adapter_46);
         return addHeapObject(ret);
     };
 
@@ -981,7 +988,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('digitaler-frieden-99416daee9ea8526c8fab295cf408199d61d343ac420e4bfdedf075a84ad23790895e67c4c0b56bc254c3227297f1095_bg.wasm', import.meta.url);
+        input = new URL('digitaler-frieden-0f443414bd108417282961b2a7ed017b22de829a3fb8f586fe6d512339ae7333c5c15674156a782cc70b2df0627f26c6_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

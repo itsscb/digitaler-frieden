@@ -1,3 +1,4 @@
+use web_sys::{KeyboardEvent, MouseEvent};
 use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
@@ -9,7 +10,7 @@ pub fn Clues() -> Html {
     let mails_callback = mails.clone();
 
     let mail = yew::NodeRef::default();
-    let on_mail_add: yew::Callback<yew::MouseEvent> = {
+    let mail_add = {
         let mail = mail.clone();
         yew::Callback::from(move |_| {
             if let Some(input) = mail.cast::<web_sys::HtmlInputElement>() {
@@ -23,6 +24,15 @@ pub fn Clues() -> Html {
             };
         })
     };
+    let on_mail_add = mail_add.clone();
+    let on_mail_add_press = {
+        yew::Callback::from(move |event: KeyboardEvent| {
+            if event.key() == "Enter" {
+                on_mail_add.emit(());
+            }
+        })
+    };
+    let on_mail_add_click = yew::Callback::from(move |_: MouseEvent| mail_add.emit(()));
 
     let on_mail_remove = {
         let mails = mails.clone();
@@ -36,7 +46,7 @@ pub fn Clues() -> Html {
     let phones_callback = phones.clone();
 
     let phone = yew::NodeRef::default();
-    let on_phone_add: yew::Callback<yew::MouseEvent> = {
+    let phone_add = {
         let phone = phone.clone();
         yew::Callback::from(move |_| {
             if let Some(input) = phone.cast::<web_sys::HtmlInputElement>() {
@@ -50,6 +60,13 @@ pub fn Clues() -> Html {
             };
         })
     };
+    let on_phone_add = phone_add.clone();
+    let on_phone_add_press = yew::Callback::from(move |event: KeyboardEvent| {
+        if event.key() == "Enter" {
+            on_phone_add.emit(());
+        }
+    });
+    let on_phone_add_click = yew::Callback::from(move |_: MouseEvent| phone_add.emit(()));
 
     let on_phone_remove = {
         let phones = phones.clone();
@@ -124,6 +141,7 @@ pub fn Clues() -> Html {
                             </div>
                             <div class="flex justify-center items-center space-x-4 w-full">
                                 <input
+                                    onkeypress={on_mail_add_press}
                                     id="email"
                                     ref={mail}
                                     class={classes!(
@@ -148,7 +166,7 @@ pub fn Clues() -> Html {
                                 )}
                                     type="text"
                                 />
-                                <button onclick={on_mail_add}>
+                                <button onclick={on_mail_add_click}>
                                     <svg
                                         class="text-primary w-16"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -190,6 +208,7 @@ pub fn Clues() -> Html {
                             </div>
                             <div class="flex justify-center items-center space-x-4 w-full">
                                 <input
+                                onkeypress={on_phone_add_press}
                                     id="phone"
                                     ref={phone}
                                     class={classes!(
@@ -214,7 +233,7 @@ pub fn Clues() -> Html {
                                 )}
                                     type="text"
                                 />
-                                <button onclick={on_phone_add}>
+                                <button onclick={on_phone_add_click}>
                                     <svg
                                         class="text-primary w-16"
                                         xmlns="http://www.w3.org/2000/svg"
