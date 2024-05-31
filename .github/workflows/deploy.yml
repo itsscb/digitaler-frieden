@@ -24,11 +24,11 @@ jobs:
       - name: Install Tailwind CSS
         run: npm install -D tailwindcss
         working-directory: ./frontend
-      - name: Install trunk
-        run: cargo install trunk
       - name: Rename Trunk.toml
         run: mv Trunk.toml Trunk.bkp
         working-directory: ./frontend
+      - name: Install trunk
+        run: cargo install trunk
       - name: Build frontend
         run: trunk build --release
         working-directory: ./frontend
@@ -42,8 +42,8 @@ jobs:
         with:
           toolchain: stable
           override: true
-      - name: Install cargo-shuttle
-      - uses: shuttle-hq/deploy-action@main
+      - name: Deploy to shuttle.rs
+        uses: shuttle-hq/deploy-action@main
         with:
           deploy-key: ${{ secrets.SHUTTLE_TOKEN }}
         # run: cargo install --locked cargo-shuttle
@@ -53,4 +53,3 @@ jobs:
       #   run: |
       #     cargo shuttle login --api-key $SHUTTLE_TOKEN
       #     cargo shuttle deploy
-
