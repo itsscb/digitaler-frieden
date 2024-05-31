@@ -17,10 +17,17 @@ jobs:
         run: rustup target add wasm32-unknown-unknown
         
       # Build frontend
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Tailwind CSS
+        run: npm install -D tailwindcss
+        working-directory: ./frontend
       - name: Install trunk
-        run: cargo install --locked trunk
+        run: cargo install trunk
       - name: Build frontend
-        run: trunk build --release --public-url /${{ github.event.repository.name }}
+        run: trunk build --release --no-config
         working-directory: ./frontend
         
       # Deploy backend
@@ -37,3 +44,4 @@ jobs:
         run: |
           cargo shuttle login --api-key $SHUTTLE_TOKEN
           cargo shuttle deploy
+
