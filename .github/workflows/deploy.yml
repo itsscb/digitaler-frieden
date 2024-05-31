@@ -44,7 +44,8 @@ jobs:
           override: true
       - name: Deploy to shuttle.rs
         uses: shuttle-hq/deploy-action@main
-        with:
+        with:          
+          allow-dirty: "true"
           deploy-key: ${{ secrets.SHUTTLE_TOKEN }}
         # run: cargo install --locked cargo-shuttle
       # - name: Deploy to Shuttle
