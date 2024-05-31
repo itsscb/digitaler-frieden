@@ -1,0 +1,35 @@
+name: Deploy to Shuttle
+
+on:
+  pull_request:
+    branches: [master]
+    types: [closed]
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Build frontend
+      - name: Install trunk
+        run: cargo install --locked trunk
+      - name: Build frontend
+        run: trunk build --release --public-url /${{ github.event.repository.name }}
+        working-directory: ./frontend
+        
+      # Deploy backend
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Install cargo-shuttle
+        run: cargo install --locked cargo-shuttle
+      - name: Deploy to Shuttle
+        env:
+          SHUTTLE_TOKEN: ${{ secrets.SHUTTLE_TOKEN }}
+        run: |
+          cargo shuttle login --api-key $SHUTTLE_TOKEN
+          cargo shuttle deploy
