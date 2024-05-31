@@ -35,10 +35,6 @@ jobs:
       - name: Rename Trunk.toml back
         run: mv Trunk.bkp Trunk.toml
         working-directory: ./frontend
-      - name: Commit build files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Build files from GitHub Actions"
         
       # Deploy backend
       - name: Install Rust
@@ -49,8 +45,8 @@ jobs:
       - name: Deploy to shuttle.rs
         uses: shuttle-hq/deploy-action@main
         with:          
+          allow-dirty: "true"
           deploy-key: ${{ secrets.SHUTTLE_TOKEN }}
-          # allow-dirty: "true"
         # run: cargo install --locked cargo-shuttle
       # - name: Deploy to Shuttle
       #   env:
