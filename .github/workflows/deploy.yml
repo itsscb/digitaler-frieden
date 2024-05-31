@@ -24,11 +24,11 @@ jobs:
       - name: Install Tailwind CSS
         run: npm install -D tailwindcss
         working-directory: ./frontend
+      - name: Install trunk
+        run: cargo install trunk
       - name: Rename Trunk.toml
         run: mv Trunk.toml Trunk.bkp
         working-directory: ./frontend
-      - name: Install trunk
-        run: cargo install trunk
       - name: Build frontend
         run: trunk build --release
         working-directory: ./frontend
