@@ -1,7 +1,0 @@
-[[hooks]]
-stage = "build"
-command = "tailwindcss"
-command_arguments = ["-i","input.css","-o","public/styles.css"]
-
-[serve]
-address = "0.0.0.0"

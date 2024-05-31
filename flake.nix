@@ -45,9 +45,9 @@
       # Development environment output
       devShells = forAllSystems ({ pkgs }: {
         default = pkgs.mkShell {
-          # buildInputs = [
-          #   rustup
-          # ];
+          buildInputs = [
+            pkgs.cargo-shuttle
+          ];
           # shellHook = ''
           #   rustup target add wasm32-unknown-unknown
           # '';
