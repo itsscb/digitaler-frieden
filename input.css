@@ -11,6 +11,10 @@
   animation: logo-fadein-right 1s ;
 }
 
+.validation-error {
+  @apply border-solid border-error;
+}
+
 @keyframes logo-fadein-right {
   0% {
     transform: translateX(-200%);
@@ -157,6 +161,9 @@ opacity:1}
   border-color: rgba(51,217,178,1.0);
 }
 
+.border-error {
+  border-color: rgba(255, 82, 82,1.0) !important;
+}
 .accent-primary {
   accent-color: rgba(51, 217, 178,1.0);
 }

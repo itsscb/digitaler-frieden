@@ -2,7 +2,7 @@ use web_sys::{KeyboardEvent, MouseEvent};
 use yew::{classes, function_component, html, Html};
 use yew_router::components::Link;
 
-use crate::router::Route;
+use crate::{router::Route, validation};
 
 #[function_component]
 pub fn Clues() -> Html {
@@ -16,11 +16,24 @@ pub fn Clues() -> Html {
             if let Some(input) = mail.cast::<web_sys::HtmlInputElement>() {
                 let mut m = mails_callback.to_vec();
                 let mail = input.value();
-                if !mail.is_empty() && !m.contains(&mail) {
-                    m.push(mail);
-                    input.set_value("");
-                }
-                mails_callback.set(m);
+                let mut classes = input.class_name();
+                match validation::validate_email(&mail) {
+                    true => {
+                        if !m.contains(&mail) {
+                            m.push(mail);
+                            input.set_value("");
+                        }
+                        input.set_class_name(&classes.replace("validation-error", ""));
+                        mails_callback.set(m);
+                    }
+                    false => match classes.find("validation-error") {
+                        Some(_) => {}
+                        None => {
+                            classes.push_str(" validation-error");
+                            input.set_class_name(&classes);
+                        }
+                    },
+                };
             };
         })
     };
@@ -52,11 +65,27 @@ pub fn Clues() -> Html {
             if let Some(input) = phone.cast::<web_sys::HtmlInputElement>() {
                 let mut m = phones_callback.to_vec();
                 let phone = input.value();
-                if !phone.is_empty() && !m.contains(&phone) {
-                    m.push(phone);
-                    input.set_value("");
+                let mut classes = input.class_name();
+                match validation::validate_phone_number(&phone) {
+                    true => {
+                        if !m.contains(&phone) {
+                            m.push(phone);
+                            input.set_value("");
+                        }
+                        input.set_class_name(&classes.replace("validation-error", ""));
+                        phones_callback.set(m);
+                    }
+                    false => {
+                        match classes.find("validation-error") {
+                            Some(_) => {}
+                            None => {
+                                classes.push_str(" validation-error");
+                                input.set_class_name(&classes);
+                            }
+                        }
+                        // classes.retain("validation_error");
+                    }
                 }
-                phones_callback.set(m);
             };
         })
     };
@@ -142,6 +171,7 @@ pub fn Clues() -> Html {
                             <div class="flex justify-center items-center space-x-4 w-full">
                                 <input
                                     onkeypress={on_mail_add_press}
+                                    type="email"
                                     id="email"
                                     ref={mail}
                                     class={classes!(
