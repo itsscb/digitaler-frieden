@@ -29,6 +29,9 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
+          
+      - name: Add Rust target wasm32-unknown-unknown
+        run: rustup target add wasm32-unknown-unknown
       
       - name: Install Trunk
         run: cargo install trunk
@@ -42,6 +45,7 @@ jobs:
         run: npm install -g tailwindcss
 
       - name: Build Frontend
+        working-directory: ./frontend
         run: |
           trunk build --release
 
