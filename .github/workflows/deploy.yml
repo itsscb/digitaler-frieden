@@ -19,6 +19,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            frontend/dist/
             node_modules
             ~/.cache/trunk
             ~/.cargo
@@ -44,7 +45,8 @@ jobs:
           node-version: 20
 
       - name: Install Tailwind CSS
-        run: npm install -g tailwindcss
+        run: npm install -D tailwindcss
+        working-directory: ./frontend
 
       - name: Build Frontend
         working-directory: ./frontend
