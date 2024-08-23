@@ -19,11 +19,10 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            node_modules
+            ~/.cache/trunk
             ~/.cargo
             target/
-            ~/.cache/trunk
-            node_modules
-            frontend/dist/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-df
 
@@ -45,19 +44,16 @@ jobs:
           node-version: 20
 
       - name: Install Tailwind CSS
-        run: npm install -D tailwindcss
-        working-directory: ./frontend
+        run: npm install -g tailwindcss
 
       - name: Build Frontend
         working-directory: ./frontend
         run: |
           trunk build --release
-
       - name: Build and Test backend
         run: |
           cargo build --verbose --release
           cargo test --verbose
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
