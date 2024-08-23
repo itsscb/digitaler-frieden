@@ -19,11 +19,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            frontend/dist/
-            node_modules
-            ~/.cache/trunk
             ~/.cargo
             target/
+            ~/.cache/trunk
+            node_modules
+            frontend/dist/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-df
 
